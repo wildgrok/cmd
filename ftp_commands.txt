@@ -1,0 +1,8 @@
+open ftp.secureftp-test.com 
+test
+test
+lcd C:\temp
+cd  /
+get Hamlet.zip
+Quit
+

@@ -1,0 +1,1415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-gb" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en-gb"><head>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-language" content="en-gb">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="copyright" content="2000, 2002, 2005, 2007 phpBB Group">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<title>DosTips.com - View forum - DOS Batch Forum</title>
+
+<link rel="stylesheet" href="viewforum_data/stylesheet.css" type="text/css">
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="./styles/avalon/theme/ie7.css" />
+<![endif]-->
+
+<script type="text/javascript">
+// <![CDATA[
+
+	var onload_functions = new Array();
+	var onunload_functions = new Array();
+	var ca_main_width = '100%';
+
+
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to:', '1');
+	var per_page = '50';
+	var base_url = './viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2';
+
+	if (page !== null && !isNaN(page) && page == Math.floor(page) && page > 0)
+	{
+		if (base_url.indexOf('?') == -1)
+		{
+			document.location.href = base_url + '?start=' + ((page - 1) * per_page);
+		}
+		else
+		{
+			document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * per_page);
+		}
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+
+	/**
+	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
+	*/
+	window.onload = function()
+	{
+		for (var i = 0; i < onload_functions.length; i++)
+		{
+			eval(onload_functions[i]);
+		}
+	}
+
+	window.onunload = function()
+	{
+		for (var i = 0; i < onunload_functions.length; i++)
+		{
+			eval(onunload_functions[i]);
+		}
+	}
+
+
+if(navigator.userAgent && navigator.userAgent.indexOf('Mac OS X') > 0)
+{
+	document.write('<link rel="stylesheet" href="./styles/avalon/theme/mac.css" type="text/css" />');
+}
+
+// ]]>
+</script>
+<script type="text/javascript" src="viewforum_data/ca_scripts.js"></script>
+</head><body class="ltr">
+<div id="body">
+
+<a name="top"></a>
+
+<table id="maintable" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+    <td class="row-left" valign="top"><img src="viewforum_data/row_left_top.gif" alt="" height="100" width="4"></td>
+	<td id="header" align="center" valign="top">
+	    <div id="logorow">
+	        <div id="logo-left"><div id="logo-right">
+		        <a href="http://www.dostips.com/forum/index.php?sid=f99dac821d498dca0604d6a2ab61bbe2"><img src="viewforum_data/site_logo.gif" alt="" title=""></a>
+	        </div></div>
+	    </div>
+
+        <div class="navrow">
+            <a href="http://www.dostips.com/forum/ucp.php?mode=register&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Register</a> • 
+            <a href="http://www.dostips.com/forum/faq.php?sid=f99dac821d498dca0604d6a2ab61bbe2">FAQ</a>
+             • <a href="http://www.dostips.com/forum/search.php?sid=f99dac821d498dca0604d6a2ab61bbe2">Search</a> • <a href="http://www.dostips.com/forum/ucp.php?mode=login&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Login</a>
+        </div>
+	</td>
+	<td class="row-right" valign="top"><img src="viewforum_data/row_right_top.gif" alt="" height="100" width="4"></td>
+</tr>
+<tr>
+    <td class="row-left"><img src="viewforum_data/spacer.gif" alt="" height="1" width="4"></td>
+	<td id="contentrow">
+
+
+
+    <table cellspacing="0" width="100%">
+    <tbody><tr>
+        <td class="gensmall">
+            <a href="http://www.dostips.com/forum/search.php?search_id=unanswered&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">View unanswered posts</a> | <a href="http://www.dostips.com/forum/search.php?search_id=active_topics&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">View active topics</a>
+        </td>
+        <td class="gensmall" align="right">
+            It is currently 17 Feb 2011 11:07<br>
+            
+        </td>
+    </tr>
+    </tbody></table>
+
+	<table class="tablebg breadcrumb" style="margin-top: 5px;" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td class="row1">
+			<p class="breadcrumbs"><a href="http://www.dostips.com/forum/index.php?sid=f99dac821d498dca0604d6a2ab61bbe2">Board index</a> » <a href="http://www.dostips.com/forum/viewforum.php?f=4&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">DosTips - Dos Batch</a> » <a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">DOS Batch Forum</a></p>
+			<p class="datetime">All times are UTC - 6 hours </p>
+		</td>
+	</tr>
+	</tbody></table>
+
+	<br>
+	<div id="pageheader">
+	    
+    		<h2><a class="titles" href="http://www.dostips.com/forum/viewforum.php?f=3&amp;start=0&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">DOS Batch Forum</a></h2>
+    	
+			<p class="moderators">Moderator: <a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=5&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">DosItHelp</a></p>
+		
+	</div>
+
+	<br clear="all">
+
+
+<div id="pagecontent">
+
+
+		<table cellspacing="1" width="100%">
+		<tbody><tr>
+			
+				<td align="left" valign="middle"><a href="http://www.dostips.com/forum/posting.php?mode=post&amp;f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2"><img src="viewforum_data/button_topic_new.gif" alt="Post new topic" title="Post new topic" height="22"></a></td>
+			
+					<td class="nav" nowrap="nowrap" valign="middle">&nbsp;Page <strong>1</strong> of <strong>29</strong><br></td>
+					<td class="gensmall" nowrap="nowrap">&nbsp;[ 1418 topics ]&nbsp;</td>
+				
+				<td align="right" width="100%">
+					<br><b><a href="#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=50">2</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=100">3</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=150">4</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=200">5</a> ... <a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=1400">29</a> &nbsp;<a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=50">Next</a></b>
+				</td>
+			
+		</tr>
+		</tbody></table>
+	
+		<div class="block-start">
+		<div class="cap-div"><div class="cap-left"><div class="cap-right">DOS Batch Forum&nbsp;</div></div></div>
+		<table class="tablebg" cellspacing="0" width="100%">
+		<tbody><tr>
+			
+				<th colspan="2">&nbsp;Topics&nbsp;</th>
+			
+			<th>&nbsp;Author&nbsp;</th>
+			<th>&nbsp;Replies&nbsp;</th>
+			<th>&nbsp;Views&nbsp;</th>
+			<th>&nbsp;Last post&nbsp;</th>
+		</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 04 Feb 2011 16:46" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1626&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">BatchLibrary or how to include batch files</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=417&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">jeb</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">6</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">122</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">17 Feb 2011 02:55</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=417&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">jeb</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1626&amp;p=6482&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6482"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 14 Feb 2011 09:08" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1651&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Background program in a batch file</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2274&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">ridgeman</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">5</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">64</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">16 Feb 2011 14:35</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=417&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">jeb</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1651&amp;p=6480&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6480"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 15 Feb 2011 22:26" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1660&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">User CommandPromt with system right</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2286&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">MrChuCong</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">0</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">15</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 22:26</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2286&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">MrChuCong</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1660&amp;p=6474&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6474"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 15 Feb 2011 11:15" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1657&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">I need Bat command upload to website</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2286&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">MrChuCong</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">23</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 22:08</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2286&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">MrChuCong</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1657&amp;p=6473&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6473"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 15 Feb 2011 09:34" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1655&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Shutdown.exe Fails?</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1812&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Dos_Probie</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">24</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 16:39</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1812&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Dos_Probie</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1655&amp;p=6472&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6472"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 09 Apr 2010 11:56" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=951&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Convert decimal to hex, and bytes to chars</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=417&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">jeb</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">4</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">1001</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 15:45</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2294&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">NeilDinardi</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=951&amp;p=6471&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6471"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 15 Feb 2011 10:06" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1656&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">prevent file name from printing on new text file</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2276&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Ilneval</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">15</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 10:38</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2276&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Ilneval</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1656&amp;p=6465&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6465"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 14 Feb 2011 12:11" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1652&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Need help with a Batch File</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2276&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Ilneval</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">8</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">56</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 10:01</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2276&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Ilneval</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1652&amp;p=6463&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6463"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 14 Feb 2011 20:37" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1653&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Batch to Verify all files *.gz and delete the Bad GZ file</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2281&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">floffy</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">22</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 03:27</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=989&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">!k</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1653&amp;p=6460&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6460"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 15 Feb 2011 00:37" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1654&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Listing Domain users with privileges</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2272&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Rafales</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">0</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">17</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">15 Feb 2011 00:37</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2272&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Rafales</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1654&amp;p=6459&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6459"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 11 Feb 2011 10:17" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1641&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">finding similar file names, run monarch</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1803&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dssrun</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">4</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">71</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">14 Feb 2011 09:52</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1803&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dssrun</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1641&amp;p=6447&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6447"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 14 Feb 2011 08:26" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1650&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">How to rename a file with date/time?</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2249&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dominion</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">37</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">14 Feb 2011 08:55</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2249&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dominion</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1650&amp;p=6445&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6445"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 09 Feb 2011 09:56" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1637&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">renaming fails</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1961&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">maclovin</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">8</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">90</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">14 Feb 2011 01:42</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1961&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">maclovin</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1637&amp;p=6441&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6441"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 18 Jan 2011 11:01" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1582&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">[SOLVED]Like TYPE command, but when it appears in the pro...</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1946&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">akol</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">137</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">13 Feb 2011 23:07</p>
+					<p class="topicdetails">Raffy73
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1582&amp;p=6439&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6439"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 13 Feb 2011 13:35" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1648&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">bach file for uninstall a program</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1440&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">atamo</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">41</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">13 Feb 2011 16:26</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1440&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">atamo</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1648&amp;p=6438&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6438"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 12 Feb 2011 18:32" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1647&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Batch file to prompt user for a choice of operations</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2257&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">steve.marks59</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">38</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">13 Feb 2011 03:02</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2257&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">steve.marks59</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1647&amp;p=6434&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6434"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 26 Jan 2011 16:25" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1605&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">String Comparison</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2032&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">flexbuffchest</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">7</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">219</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">12 Feb 2011 22:40</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2258&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dbenham</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1605&amp;p=6433&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6433"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 11 Feb 2011 17:52" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1643&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Batch file to keep computer clean</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2237&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">kenlou</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">69</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">12 Feb 2011 19:16</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1643&amp;p=6429&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6429"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 12 Feb 2011 13:10" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1646&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">how to copy and paste data at the beginning of a file?</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2249&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dominion</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">42</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">12 Feb 2011 15:54</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2249&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dominion</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1646&amp;p=6426&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6426"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 09 Feb 2011 11:03" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1638&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Kill a Task, have a 10 second delay, then restart task</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2207&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">natechie</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">4</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">90</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">09 Feb 2011 21:31</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2207&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">natechie</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1638&amp;p=6408&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6408"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 08 Feb 2011 10:28" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1632&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Parse or string minipulating after last "\"</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2188&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">foremore</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">6</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">103</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">08 Feb 2011 16:56</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1632&amp;p=6396&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6396"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 08 Feb 2011 12:49" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1633&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">rename leading with random number. then re-randomize later.</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2095&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Tundrabob</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">62</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">08 Feb 2011 16:37</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1633&amp;p=6395&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6395"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 08 Feb 2011 04:35" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1630&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">insert text to rename files</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2184&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">accessbeginer</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">71</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">08 Feb 2011 10:01</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1855&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">ChickenSoup</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1630&amp;p=6384&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6384"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 07 Feb 2011 15:45" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1629&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">How to create a folder based on user input?</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2172&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">abacabb</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">69</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">08 Feb 2011 08:49</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1629&amp;p=6383&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6383"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 04 Feb 2011 01:57" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1624&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Rename all files with a sequence number</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2135&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">kg2uin</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">5</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">186</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">05 Feb 2011 13:49</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2135&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">kg2uin</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1624&amp;p=6375&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6375"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 04 Feb 2011 15:55" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1625&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">HANDLING STRING THROUGH IF AND ELSE IN DOS</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2141&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aatman.kumar</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">114</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">04 Feb 2011 17:01</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1625&amp;p=6370&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6370"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 30 Jan 2011 14:01" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1618&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">move file to a shared folder in windows 7</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2095&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Tundrabob</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">110</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">03 Feb 2011 18:17</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2095&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Tundrabob</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1618&amp;p=6364&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6364"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 01 Feb 2011 06:28" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1619&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Travers PATH variable</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2111&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">xl1000</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">7</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">187</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">02 Feb 2011 16:37</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1619&amp;p=6363&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6363"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 02 Feb 2011 08:10" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1623&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Store variable</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1851&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">walter4991</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">122</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">02 Feb 2011 10:04</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1851&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">walter4991</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1623&amp;p=6361&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6361"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 01 Feb 2011 09:27" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1620&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Variable source folder for batch file</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2114&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">tattooaussie</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">5</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">143</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">02 Feb 2011 05:47</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2114&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">tattooaussie</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1620&amp;p=6358&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6358"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 21 Jan 2011 10:10" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">string manipulation help</a>
+					
+						<p class="gensmall"> [ <img src="viewforum_data/icon_topic_latest.gif" alt="Go to page" title="Go to page" height="9" width="13">Go to page: <a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=0">1</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=15">2</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=30">3</a> ] </p>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1966&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">ice_531</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">30</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">548</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">01 Feb 2011 17:50</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1966&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">ice_531</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1592&amp;p=6356&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6356"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 01 Feb 2011 15:16" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1621&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Trying to use Move vs. Xcopy in a batch file</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2117&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Snake Eyes</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">104</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">01 Feb 2011 15:53</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1621&amp;p=6355&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6355"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 28 Jan 2011 01:29" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1611&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">needs to create incremental synch local folder with ftp</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2060&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">rizutov</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">10</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">150</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">01 Feb 2011 07:03</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2060&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">rizutov</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1611&amp;p=6341&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6341"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 30 Jan 2011 03:38" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1616&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Hide password</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1851&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">walter4991</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">148</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">30 Jan 2011 07:17</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1616&amp;p=6325&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6325"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 30 Jan 2011 02:25" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1615&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">List Files and Directoy reverse</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2088&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Daaka</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">92</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">30 Jan 2011 06:57</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1615&amp;p=6324&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6324"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 28 Jan 2011 14:15" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1612&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">String Manipulation on environment variables</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2067&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">milos78</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">7</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">206</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">29 Jan 2011 18:10</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1612&amp;p=6318&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6318"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 26 Jan 2011 19:50" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1606&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Echoing /?</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2035&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Kligham</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">6</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">143</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">29 Jan 2011 09:04</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=417&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">jeb</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1606&amp;p=6316&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6316"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 27 Jan 2011 05:40" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1609&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">find out user's windows</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1672&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Mohammad_Dos</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">4</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">116</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">28 Jan 2011 13:45</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1609&amp;p=6299&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6299"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 27 Jan 2011 05:47" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1610&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">variable and text file</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1672&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">Mohammad_Dos</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">2</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">135</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">28 Jan 2011 13:14</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1610&amp;p=6297&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6297"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 24 Oct 2010 16:46" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1429&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">strLen boosted</a>
+					
+						<p class="gensmall"> [ <img src="viewforum_data/icon_topic_latest.gif" alt="Go to page" title="Go to page" height="9" width="13">Go to page: <a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1429&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=0">1</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1429&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=15">2</a> ] </p>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1758&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">sowgtsoi</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">17</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">1051</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">26 Jan 2011 16:56</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=417&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">jeb</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1429&amp;p=6267&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6267"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 25 Jan 2011 03:15" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1598&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Record Minutes Every 30 Minutes</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2008&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">dockies</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">4</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">121</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">26 Jan 2011 08:36</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1855&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">ChickenSoup</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1598&amp;p=6264&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6264"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 26 Jan 2011 07:37" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1603&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Windows firewall</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1918&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">lob</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">70</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">26 Jan 2011 08:02</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1855&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">ChickenSoup</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1603&amp;p=6262&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6262"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 23 Jan 2011 03:38" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1596&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Whether outside your window</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor">vandoiyoy</p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">74</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">26 Jan 2011 07:52</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1918&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">lob</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1596&amp;p=6261&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6261"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 25 Jan 2011 15:34" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1601&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">F5 Key - Need to simulate at end of batch Win 7</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2018&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">nono5551212</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">1</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">99</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">25 Jan 2011 16:14</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1601&amp;p=6257&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6257"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 24 Jan 2011 09:56" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1597&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">"RUN AS ..." may destroy Windows\System32</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">alan_b</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">5</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">161</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">25 Jan 2011 15:47</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1597&amp;p=6256&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6256"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 25 Jan 2011 13:02" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1599&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Create a SendTo (Current Directory Then Delete)</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2018&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">nono5551212</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">3</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">108</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">25 Jan 2011 15:32</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=2018&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">nono5551212</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1599&amp;p=6254&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6254"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 19 Jan 2011 20:50" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1588&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">mailto</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1904&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">scienceguru1.bat</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">5</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">150</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">23 Jan 2011 16:25</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1904&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">scienceguru1.bat</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1588&amp;p=6240&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6240"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 22 Jan 2011 05:25" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1595&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Adjustable PING delay.  Is 128.0.0.1 always good ?</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">alan_b</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">12</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">205</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">23 Jan 2011 13:19</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=592&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">alan_b</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1595&amp;p=6239&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6239"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 21 Jan 2011 18:13" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1593&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">Hello all</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor">Peelahoiliony</p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">0</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">100</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">21 Jan 2011 18:13</p>
+					<p class="topicdetails">Peelahoiliony
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1593&amp;p=6221&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6221"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td class="row1" align="center" width="25"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				
+				<td class="row1">
+					
+					 <a title="Posted: 18 Jan 2011 05:03" href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1581&amp;sid=f99dac821d498dca0604d6a2ab61bbe2" class="topictitle">[SOLVED]I need a function that deletes a single line in a...</a>
+					
+				</td>
+				<td class="row2" align="center" width="130"><p class="topicauthor"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1946&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">akol</a></p></td>
+				<td class="row1" align="center" width="50"><p class="topicdetails">13</p></td>
+				<td class="row2" align="center" width="50"><p class="topicdetails">309</p></td>
+				<td class="row1" align="center" width="140">
+					<p class="topicdetails" style="white-space: nowrap;">21 Jan 2011 13:18</p>
+					<p class="topicdetails"><a href="http://www.dostips.com/forum/memberlist.php?mode=viewprofile&amp;u=1265&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">aGerman</a>
+						<a href="http://www.dostips.com/forum/viewtopic.php?f=3&amp;t=1581&amp;p=6220&amp;sid=f99dac821d498dca0604d6a2ab61bbe2#p6220"><img src="viewforum_data/icon_topic_latest.gif" alt="View the latest post" title="View the latest post" height="9" width="13"></a>
+					</p>
+				</td>
+			</tr>
+
+		
+		<tr align="center">
+			
+				<td class="cat" colspan="6">
+			
+					<form method="post" action="./viewforum.php?f=3&amp;start=0&amp;sid=f99dac821d498dca0604d6a2ab61bbe2"><span class="gensmall">Display topics from previous:</span>&nbsp;<select name="st" id="st"><option value="0" selected="selected">All Topics</option><option value="1">1 day</option><option value="7">7 days</option><option value="14">2 weeks</option><option value="30">1 month</option><option value="90">3 months</option><option value="180">6 months</option><option value="365">1 year</option></select>&nbsp;<span class="gensmall">Sort by</span> <select name="sk" id="sk"><option value="a">Author</option><option value="t" selected="selected">Post time</option><option value="r">Replies</option><option value="s">Subject</option><option value="v">Views</option></select> <select name="sd" id="sd"><option value="a">Ascending</option><option value="d" selected="selected">Descending</option></select>&nbsp;<input class="btnlite" name="sort" value="Go" type="submit"></form>
+				</td>
+		</tr>
+		
+		</tbody></table>
+		<div class="block-end-left"><div class="block-end-right"></div></div></div>
+	
+		<table cellspacing="1" width="100%">
+		<tbody><tr>
+			
+				<td align="left" valign="middle"><a href="http://www.dostips.com/forum/posting.php?mode=post&amp;f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2"><img src="viewforum_data/button_topic_new.gif" alt="Post new topic" title="Post new topic" height="22"></a></td>
+			
+				<td class="nav" nowrap="nowrap" valign="middle">&nbsp;Page <strong>1</strong> of <strong>29</strong></td>
+				<td class="gensmall" nowrap="nowrap">&nbsp;[ 1418 topics ]&nbsp;</td>
+				<td class="gensmall" nowrap="nowrap" align="right" width="100%"><b><a href="#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=50">2</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=100">3</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=150">4</a><span class="page-sep">, </span><a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=200">5</a> ... <a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=1400">29</a> &nbsp;<a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2&amp;start=50">Next</a></b></td>
+			
+		</tr>
+		</tbody></table>
+	
+
+	<br clear="all">
+
+</div>
+
+<table class="tablebg breadcrumb" style="margin-top: 5px;" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td class="row1">
+			<p class="breadcrumbs"><a href="http://www.dostips.com/forum/index.php?sid=f99dac821d498dca0604d6a2ab61bbe2">Board index</a> » <a href="http://www.dostips.com/forum/viewforum.php?f=4&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">DosTips - Dos Batch</a> » <a href="http://www.dostips.com/forum/viewforum.php?f=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2">DOS Batch Forum</a></p>
+			<p class="datetime">All times are UTC - 6 hours </p>
+		</td>
+	</tr>
+	</tbody></table>
+	<br clear="all">
+
+	<table class="tablebg" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td class="cat"><h4>Who is online</h4></td>
+	</tr>
+	<tr>
+		<td class="row1"><p class="gensmall">Users browsing this forum: <span style="color: rgb(158, 141, 167);" class="username-coloured">Google [Bot]</span>, <span style="color: rgb(158, 141, 167);" class="username-coloured">Yahoo [Bot]</span> and 12 guests</p></td>
+	</tr>
+	</tbody></table>
+
+	<br clear="all">
+
+	<table cellspacing="0" width="100%">
+	<tbody><tr>
+		<td align="left" valign="top">
+			<table class="legend legend-viewforum" border="0" cellpadding="0" cellspacing="3">
+			<tbody><tr>
+				<td style="text-align: center;" width="20"><img src="viewforum_data/topic_unread.gif" alt="New posts" title="New posts" height="17" width="17"></td>
+				<td class="gensmall">New posts</td>
+				<td>&nbsp;&nbsp;</td>
+				<td style="text-align: center;" width="20"><img src="viewforum_data/topic_read.gif" alt="No new posts" title="No new posts" height="17" width="17"></td>
+				<td class="gensmall">No new posts</td>
+				<td>&nbsp;&nbsp;</td>
+				<td style="text-align: center;" width="20"><img src="viewforum_data/announce_read.gif" alt="Announce" title="Announce" height="17" width="17"></td>
+				<td class="gensmall">Announcement</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><img src="viewforum_data/topic_unread.gif" alt="New posts [ Popular ]" title="New posts [ Popular ]" height="17" width="17"></td>
+				<td class="gensmall">New posts [ Popular ]</td>
+				<td>&nbsp;&nbsp;</td>
+				<td style="text-align: center;"><img src="viewforum_data/topic_read.gif" alt="No new posts [ Popular ]" title="No new posts [ Popular ]" height="17" width="17"></td>
+				<td class="gensmall">No new posts [ Popular ]</td>
+				<td>&nbsp;&nbsp;</td>
+				<td style="text-align: center;"><img src="viewforum_data/sticky_read.gif" alt="Sticky" title="Sticky" height="17" width="17"></td>
+				<td class="gensmall">Sticky</td>			
+			</tr>
+			<tr>
+				<td style="text-align: center;"><img src="viewforum_data/topic_unread_locked.gif" alt="New posts [ Locked ]" title="New posts [ Locked ]" height="17" width="17"></td>
+				<td class="gensmall">New posts [ Locked ]</td>
+				<td>&nbsp;&nbsp;</td>
+				<td style="text-align: center;"><img src="viewforum_data/topic_read_locked.gif" alt="No new posts [ Locked ]" title="No new posts [ Locked ]" height="17" width="17"></td>
+				<td class="gensmall">No new posts [ Locked ]</td>
+				<td>&nbsp;&nbsp;</td>
+				<td style="text-align: center;"><img src="viewforum_data/topic_moved.gif" alt="Moved topic" title="Moved topic" height="17" width="17"></td>
+				<td class="gensmall">Moved topic</td>
+			</tr>
+			</tbody></table>
+		</td>
+		<td align="right"><span class="gensmall">You <strong>cannot</strong> post new topics in this forum<br>You <strong>cannot</strong> reply to topics in this forum<br>You <strong>cannot</strong> edit your posts in this forum<br>You <strong>cannot</strong> delete your posts in this forum<br></span></td>
+	</tr>
+	</tbody></table>
+
+
+<br clear="all">
+
+<table cellspacing="0" width="100%">
+<tbody><tr>
+	<td><form method="post" name="search" action="./search.php?fid[]=3&amp;sid=f99dac821d498dca0604d6a2ab61bbe2"><span class="gensmall">Search for:</span> <input class="post" name="keywords" size="20" type="text"> <input class="btnlite" value="Go" type="submit"></form></td>
+	<td align="right">
+	<form method="post" name="jumpbox" action="./viewforum.php?sid=f99dac821d498dca0604d6a2ab61bbe2" onsubmit="if(document.jumpbox.f.value == -1){return false;}">
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="nowrap"><span class="gensmall">Jump to:</span>&nbsp;<select name="f" onchange="if(this.options[this.selectedIndex].value != -1){ document.forms['jumpbox'].submit() }">
+
+		
+			<option value="-1">Select a forum</option>
+		<option value="-1">------------------</option>
+			<option value="4">DosTips - Dos Batch</option>
+		
+			<option value="3" selected="selected">&nbsp; &nbsp;DOS Batch Forum</option>
+		
+
+		</select>&nbsp;<input class="btnlite" value="Go" type="submit"></td>
+	</tr>
+	</tbody></table>
+
+	</form>
+</td>
+</tr>
+</tbody></table>
+
+
+
+<div id="wrapfooter">
+	
+	<span class="copyright">
+	Powered by <a href="http://www.phpbb.com/">phpBB</a> © 2000, 2002, 2005, 2007 phpBB Group.
+	<br>Forum style by <a href="http://www.stsoftware.biz/index.html">Vjacheslav Trushkin</a> for <a href="http://www.freeforums.org/" title="Free Forum Hosting">Free Forums</a>/<a href="http://www.divisioncore.com/">DivisionCore</a>.
+	</span>
+</div>
+
+	</td>
+	<td class="row-right"><img src="viewforum_data/spacer.gif" alt="" height="1" width="4"></td>
+</tr>
+<tr>
+    <td colspan="3" class="row-bottom"><div><div></div></div></td>
+</tr>
+</tbody></table>
+
+</div>
+</body></html>

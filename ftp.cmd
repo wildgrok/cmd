@@ -1,0 +1,21 @@
+ftp -s:D:\split_join\ftp.txt > ftpsend.out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
